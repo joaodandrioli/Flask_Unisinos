@@ -1,0 +1,16 @@
+#Ambiente Virtual
+venv/
+.venv/
+
+# Arquivos python compilados
+*.pyc
+*.pyo
+*.pyd
+
+#Configurações do editor
+.vscode/
+.idea/
+
+#Arquivos do sistema
+.DS_Store
+Thums.db
