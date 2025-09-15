@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card">
+  <form method="post" action="{{ url_for('index') }}" class="task-form">
+    <input type="text" name="descricao" placeholder="Nova tarefa" required maxlength="200">
+    <button type="submit">Adicionar</button>
+  </form>
+
+  {% if tarefas %}
+    <ul class="task-list">
+      {% for tarefa in tarefas %}
+        <li>
+          <span class="desc">{{ tarefa.descricao }}</span>
+          <div class="actions">
+            <a href="{{ url_for('edit', tarefa_id=tarefa.id) }}" class="btn edit">Editar</a>
+            <form method="post" action="{{ url_for('delete', tarefa_id=tarefa.id) }}" class="inline-form" onsubmit="return confirm('Excluir tarefa?');">
+              <button type="submit" class="btn delete">Excluir</button>
+            </form>
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>Nenhuma tarefa cadastrada.</p>
+  {% endif %}
+</div>
+{% endblock %}
